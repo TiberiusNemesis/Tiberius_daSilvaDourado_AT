@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.musicstream</groupId>
+        <artifactId>music-streaming-ddd</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>billing</artifactId>
+    <name>Subscription &amp; Billing (Core Context)</name>
+    <description>The core domain: subscriptions, credit cards and the anti-fraud authorization of transactions.</description>
+
+    <!--
+        Core context. In Partnership with Listener Account (a subscriber is a
+        listener; the two contexts evolve together), but still shielded by an
+        Anticorruption Layer (AccountGateway / BillingCustomer) so the rich
+        billing model is never contaminated by the account model.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.musicstream</groupId>
+            <artifactId>shared-kernel</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.musicstream</groupId>
+        <artifactId>music-streaming-ddd</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>music-library</artifactId>
+    <name>Music Library (Supporting Context)</name>
+    <description>Favorites and playlists. Downstream Customer of Listener Account, shielded by an Anticorruption Layer.</description>
+
+    <!--
+        Note: this context does NOT depend on listener-account. The relationship
+        is Customer-Supplier, and we keep it decoupled with an Anticorruption
+        Layer: the port `AccountDirectory` (acl package) speaks only this
+        context's own language (LibraryOwner). The adapter that bridges to the
+        real account lives in the bootstrap module.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.musicstream</groupId>
+            <artifactId>shared-kernel</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

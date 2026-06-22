@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.musicstream</groupId>
+        <artifactId>music-streaming-ddd</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>streaming-app</artifactId>
+    <name>Streaming App (Bootstrap)</name>
+    <description>Composition root: REST interface, dependency wiring, H2 persistence adapters and Anticorruption Layer adapters.</description>
+
+    <!--
+        The bootstrap module is the only one that knows Spring and JPA. It wires
+        the framework-free contexts together, exposes the REST API, implements
+        the repository ports against H2, and provides the ACL adapters that let
+        the contexts talk to each other.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.musicstream</groupId>
+            <artifactId>listener-account</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.musicstream</groupId>
+            <artifactId>music-library</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.musicstream</groupId>
+            <artifactId>billing</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
